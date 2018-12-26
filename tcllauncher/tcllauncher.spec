@@ -3,8 +3,6 @@
 # All rights reserved.
 #
 
-%define tclversion	8.6
-
 Summary:	This is tcllauncher, a launcher program for Tcl applications.
 Name:		tcllauncher
 Version:	1.8
@@ -13,8 +11,11 @@ URL:		https://github.com/flightaware/tcllauncher
 License:	MIT
 BuildRequires:	autoconf automake libtool
 BuildRequires:	tcl-devel
-Requires:	tcl(abi) = %{tclversion}
+Requires:	tclx
 Source0:	https://github.com/flightaware/tcllauncher/archive/v%{version}.tar.gz#/tcllauncher-%{version}.tar.gz
+
+%{!?tcl_version: %global tcl_version %(echo 'puts $tcl_version' | tclsh)}
+%{!?tcl_sitelib: %global tcl_sitelib %{_datadir}/tcl%{tcl_version}}
 
 %description
 %{Summary}
@@ -24,7 +25,7 @@ Source0:	https://github.com/flightaware/tcllauncher/archive/v%{version}.tar.gz#/
 
 %build
 autoreconf -vif
-%configure --with-tcl=%{_libdir}/tcl%{tclversion}
+%configure --libdir=%{tcl_sitelib}
 %make_build
 
 %install
@@ -38,7 +39,7 @@ rm -rf %{buildroot}
 %license license.terms
 %doc ChangeLog README.md
 %{_bindir}/tcllauncher
-%{_libdir}/Tcllauncher%{version}/*
+%{tcl_sitelib}/Tcllauncher%{version}/*
 %{_mandir}/mann/tcllauncher.n.gz
 
 %changelog
