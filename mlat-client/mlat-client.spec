@@ -29,14 +29,14 @@ Source0:	https://github.com/mutability/mlat-client/archive/v%{version}.tar.gz#/m
 
 install -D -p -m 0755 %{buildroot}/%{_bindir}/fa-mlat-client %{buildroot}/%{_libexecdir}/fa-mlat-client
 rm %{buildroot}/%{_bindir}/fa-mlat-client
-install -D -p -m 0644 debian/mlat-client.logrotate %{buildroot}/%{_sysconfdir}/logrotate/mlat-client
+install -D -p -m 0644 debian/mlat-client.logrotate %{buildroot}/%{_sysconfdir}/logrotate.d/mlat-client
 
 %files
 %defattr(-,root,root,-)
 %{_bindir}/mlat-client
 %{python3_sitearch}/*
 %{_libexecdir}/fa-mlat-client
-%{_sysconfdir}/logrotate/mlat-client
+%{_sysconfdir}/logrotate.d/mlat-client
 
 %changelog
 * Wed Dec 26 2018 Quentin Schwerkolt
