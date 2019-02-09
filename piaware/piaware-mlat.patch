@@ -1,0 +1,13 @@
+diff --git a/programs/piaware/mlat.tcl b/programs/piaware/mlat.tcl
+index 7868aee..a218da4 100644
+--- a/programs/piaware/mlat.tcl
++++ b/programs/piaware/mlat.tcl
+@@ -15,7 +15,7 @@ set ::mlatRestartMillis 60000
+ # UDP transport info
+ set ::mlatUdpTransport {}
+ # path to fa-mlat-client
+-set ::mlatClientPath [auto_execok "/usr/lib/piaware/helpers/fa-mlat-client"]
++set ::mlatClientPath [auto_execok "/usr/libexec/fa-mlat-client"]
+ # current mlat status for the statusfile, one of:
+ #   not_enabled
+ #   not_running

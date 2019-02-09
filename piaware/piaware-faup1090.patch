@@ -1,0 +1,13 @@
+diff --git a/programs/piaware/faup1090.tcl b/programs/piaware/faup1090.tcl
+index df408eb..3379565 100644
+--- a/programs/piaware/faup1090.tcl
++++ b/programs/piaware/faup1090.tcl
+@@ -36,7 +36,7 @@ proc setup_faup1090_vars {} {
+ 	set ::adsbDataProgram [receiver_description piawareConfig]
+ 
+ 	# path to faup1090
+-	set path "/usr/lib/piaware/helpers/faup1090"
++	set path "/usr/libexec/faup1090"
+ 	if {[set ::faup1090Path [auto_execok $path]] eq ""} {
+ 		logger "No faup1090 found at $path, cannot continue"
+ 		exit 1
