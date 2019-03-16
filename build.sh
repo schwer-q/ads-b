@@ -10,6 +10,11 @@ set -x
 PACKAGES="libbladeRF dump1090-fa mlat-client tcllauncher piaware"
 DIST='f29'
 ARCH=`uname -m`
+case "${ARCH}" in
+    'armv7l')
+	ARCH='armv7hl'
+	;;
+esac
 
 for PKG in ${PACKAGES}; do
     if rpm -qa | grep -q ${PKG}; then
